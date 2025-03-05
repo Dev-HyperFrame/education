@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: role-test-pod
+  labels:
+    app: role-test-pod
+    type: web-server
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+

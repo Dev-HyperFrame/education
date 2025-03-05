@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rollout-nginx
+spec:
+  selector:
+    matchLabels:
+      app: rollout-nginx
+  replicas: 2 # Pod 수
+  strategy: # Update 전략 설정 부분
+    type: RollingUpdate # Recreate or RollingUpdate 설정
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        app: rollout-nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.26.3
+        imagePullPolicy: Always
+

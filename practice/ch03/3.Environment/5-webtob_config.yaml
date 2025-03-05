@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-webtob
+data:
+  http.m: |-
+    *DOMAIN
+    webtob
+
+    *NODE
+    webtob1         WEBTOBDIR="$WEBTOB_HOME",
+                    SHMKEY = 54000,
+                    DOCROOT="docs",
+                    PORT = "80",
+                    HTH = 1,
+                    #Group = "nobody",
+                    #User = "nobody",
+                    NODENAME = "$NODENAME",
+                    ERRORDOCUMENT = "503",
+                    #Options="IgnoreExpect100Continue",
+                    JSVPORT = 9900,
+                    LOGGING = "log1",
+                    ERRORLOG = "log2",

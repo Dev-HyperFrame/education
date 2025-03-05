@@ -1,0 +1,12 @@
+apiVersion: v1 #Object를 생성할 때 사용하는 API Version을 명시
+kind: Pod #만들려고 하는 Object 종류를 명시
+metadata: #이름이나 Label을 명시한다.
+  name: nginx01
+  labels:
+    app: nginx01
+    type: web-server
+spec: #생성하려는 객체의 스펙을 작성하는 곳. ‘-’는 시작을 의미함
+  containers:
+    - name: nginx
+      image: nginx
+

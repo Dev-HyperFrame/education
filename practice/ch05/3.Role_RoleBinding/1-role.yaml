@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer
+  namespace: default
+rules:
+- apiGroups: [""]      # Pod 컨트롤 권한 부여
+  resources: ["pods"]
+  verbs: ["list", "get", "create", "update", "delete"]
+- apiGroups: [""]      # Configmap 생성 권한 부여
+  resources: ["configmaps"]
+  verbs: ["create"]

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: quota-test-pod
+  namespace: space
+spec:
+  containers:
+  - name: quota-test-container
+    image: nginx
+    resources:
+      requests:
+        cpu: "3"   # ResourceQuota의 requests.cpu: "2"를 초과하므로 ResourceQuota에 걸림  
+      limits:
+        cpu: "5"

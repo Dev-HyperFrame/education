@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx01
+    type: web-server
+  name: nginx01-service-loadbalancer
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: nginx01
+    type: web-server
+  type: LoadBalancer

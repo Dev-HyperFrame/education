@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-nginx  # Deployment 이름 변경
+spec:
+  selector:
+    matchLabels:
+      app: deployment-nginx  # label 변경
+  replicas: 5  # Pod 개수 설정
+  strategy:
+    type: RollingUpdate  # 롤링 업데이트 전략
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        app: deployment-nginx  
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod 
+metadata: 
+  name : nodeaffinity-nginx
+spec: 
+  containers:
+    - name: nginx
+      image: nginx
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: role    # key에는 하나의 값만 사용 가능. 
+            operator: In
+            values:       # values에는 여러 개의 값 사용 가능
+            - infra
+            - business
+          - key: type    # 여러 개의 key는 사용 가능
+            operator: In 
+            values:
+             - web
+

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    type: web-server
+  name: multi-container-svc
+  namespace: default
+spec:
+  internalTrafficPolicy: Cluster
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+    name: nginx1
+  - port: 8081
+    protocol: TCP
+    targetPort: 8081
+    name: nginx2
+  selector:
+    test: multi
+  type: ClusterIP

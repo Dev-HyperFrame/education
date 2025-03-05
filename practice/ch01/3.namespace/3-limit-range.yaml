@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: space-limit
+  namespace: space
+spec:
+  limits:
+    - type: Container
+      default:
+        cpu: "500m"            # 기본 CPU limit: 0.5 코어
+        memory: "512Mi"        # 기본 Memory limit: 512Mi
+      defaultRequest:
+        cpu: "250m"            # 기본 CPU 요청: 0.25 코어
+        memory: "256Mi"        # 기본 Memory 요청: 256Mi
+      max:
+        cpu: "5"               # 최대 CPU 사용량: 5 코어
+        memory: "2Gi"          # 최대 Memory 사용량: 2Gi
+      min:
+        cpu: "100m"            # 최소 CPU 요청량: 0.1 코어
+        memory: "128Mi"        # 최소 Memory 요청량: 128Mi

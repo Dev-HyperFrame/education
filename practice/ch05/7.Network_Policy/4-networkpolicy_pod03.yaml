@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: pod03-network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: network-policy-pod03
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: network-policy-pod02  # 해당 Pod의 요청만 받는 설정
+      ports:
+        - protocol: TCP
+          port: 8082
+

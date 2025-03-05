@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: nginx-schedule
+  labels:
+    app: nginx-schedule
+    type: web-server
+spec: 
+  containers:
+    - name: nginx
+      image: nginx
+  nodeName: k8sedu-node01  # 해당 Node에 Pod 생성

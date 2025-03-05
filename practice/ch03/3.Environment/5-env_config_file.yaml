@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: env-config-pod03
+  name: env-config-pod03
+spec:  
+  containers:
+    - image: josunghwan/env_sample:v01
+      name: test
+      volumeMounts:
+        - name: webtob-config-path
+          mountPath: /home/webtob/config  # 파일 생성 경로
+  volumes: 
+     - name: webtob-config-path
+       configMap:
+         name: config-webtob
+

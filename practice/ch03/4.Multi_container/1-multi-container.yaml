@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-container-test  # Pod의 이름 지정
+  labels:
+    test: multi
+spec:
+  containers:
+    - name: nginx1  # 첫 번째 컨테이너 
+      image: nginx 
+      ports:
+        - containerPort: 80
+    - name: nginx2
+      image: josunghwan/nginx:v1
+      ports:
+        - containerPort: 8081
+

@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx
+  name: nginx
+spec:
+  initContainers:
+  - image: busybox
+    name: busybox
+    command: [ "/bin/sh", "-c", "echo Hello > /data/test.txt" ]
+    volumeMounts:
+    - name: empty-dir
+      mountPath: /data
+  containers:
+  - image: nginx
+    name: nginx-emptydir
+    volumeMounts:
+    - name: empty-dir
+      mountPath: /opt
+  volumes:
+  - name: empty-dir
+    emptyDir: {}
+

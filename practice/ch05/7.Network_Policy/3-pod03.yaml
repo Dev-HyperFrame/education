@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: network-policy-pod03
+  labels:
+    app: network-policy-pod03
+spec:
+  containers:
+  - name: nginx
+    image: josunghwan/nginx_8082:v01  # binding된 port가 8082인 이미지
+    ports:
+    - containerPort: 8082
+

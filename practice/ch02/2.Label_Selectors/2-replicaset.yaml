@@ -1,0 +1,23 @@
+apiVersion: apps/v1 # ReplicationController와는 다른 api
+kind: ReplicaSet
+metadata: 
+  name : nginx-selector
+  labels: # ReplicaSet에 Label을 지정
+    app: nginx-selector
+    type: web-server02
+spec:
+  template:
+    metadata:
+      name : nginx-selector
+      labels: # Pod에 Label을 지정
+        app: nginx-selector
+        type: web-server02
+    spec: 
+      containers:
+      - name: nginx
+        image: nginx
+  replicas: 3 #복제할 Pod 숫자
+  selector: #아래 Label을 가진 Pod만 연결하여 관리하는 Selector
+    matchLabels:
+      type: web-server02
+

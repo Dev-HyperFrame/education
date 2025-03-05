@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: range-test-pod
+  namespace: space
+spec:
+  containers:
+  - name: range-test-container
+    image: nginx
+    resources:
+      requests:
+        cpu: "1"    
+      limits:
+        cpu: "6"      # LimitRange의 max(cpu=5)를 초과하므로 LimitRange에 걸림

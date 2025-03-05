@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-nginx
+spec:
+  replicas: 3 # 복제할 파드 숫자
+  selector:
+    matchLabels: #ReplicaController에서는 matchLabels 부분이 없다.
+      app: replicaset-nginx
+  template: # Template 안에는 pod yaml에서 작성한 spec 부분이 metadata에 들어간다.
+    metadata:
+      labels:
+        app: replicaset-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+

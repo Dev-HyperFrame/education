@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx02
+    type: web-server
+  name: nginx02-service-cluster
+  namespace: prod
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: nginx02
+    type: web-server
+  type: ClusterIP  

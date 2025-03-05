@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resource-nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      resources:	# Resource Request & Limit 설정
+        requests:
+           cpu: 10m
+           memory: "500Mi"
+        limits:
+           cpu: 100m
+           memory: "1Gi"
+

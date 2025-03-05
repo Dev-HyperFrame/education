@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod 
+metadata: 
+  name : nodeselector-nginx
+spec: 
+  containers:
+    - name: nginx
+      image: nginx
+  nodeSelector:       # NodeSelector 설정
+    role: business
+
